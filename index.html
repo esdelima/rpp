@@ -3,104 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPP - Pembelajaran Mendalam</title>
+    <title>RPP ESDELIMA - Pembelajaran Mendalam</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4e73df;
-            --secondary-color: #f8f9fc;
-            --accent-color: #2e59d9;
+            --primary-color: rgba(110, 99, 255, 0.8);
+            --secondary-color: rgba(255, 255, 255, 0.1);
+            --accent-color: rgba(78, 115, 223, 0.8);
+            --text-color: #ffffff;
+            --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --blur: 12px;
+            --border-radius: 16px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--text-color);
+            min-height: 100vh;
+            background-attachment: fixed;
+            line-height: 1.6;
         }
         
         .sidebar {
-            background-color: var(--secondary-color);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
             height: 100vh;
             position: fixed;
             overflow-y: auto;
-            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            box-shadow: var(--shadow);
             width: 280px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 10;
         }
         
         .main-content {
             margin-left: 280px;
-            padding: 20px;
+            padding: 30px;
             min-height: 100vh;
         }
         
         .card {
-            border-radius: 0.35rem;
-            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
-            margin-bottom: 20px;
-            border: none;
+            background: var(--secondary-color);
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
         }
         
         .card-header {
-            background-color: var(--primary-color);
+            background: var(--primary-color);
             color: white;
             font-weight: 600;
-            border-radius: 0.35rem 0.35rem 0 0 !important;
+            border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
         }
         
         .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline-primary {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            background: transparent;
+            border-radius: 50px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
         
         .form-control, .form-select {
-            border-radius: 0.35rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: var(--text-color);
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 0.25rem rgba(110, 99, 255, 0.25);
+            color: var(--text-color);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
         }
         
         .rpp-title {
-            color: var(--primary-color);
+            color: white;
             font-weight: 700;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .sub-title {
-            color: var(--accent-color);
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 600;
+            margin-bottom: 15px;
         }
         
         .dimension-checkbox {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
         
         .dimension-checkbox input {
-            margin-right: 8px;
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .dimension-checkbox label {
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .nav-link {
-            color: #333;
+            color: rgba(255, 255, 255, 0.8);
             font-weight: 500;
             border-left: 3px solid transparent;
+            padding: 12px 20px;
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
         
         .nav-link.active {
-            color: var(--primary-color);
-            background-color: rgba(78, 115, 223, 0.1);
-            border-left: 3px solid var(--primary-color);
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            border-left: 3px solid white;
+            font-weight: 600;
         }
         
         .nav-link:hover {
-            color: var(--primary-color);
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .step-content {
             display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .step-content.active {
@@ -117,18 +192,27 @@
         
         .navigation-buttons {
             overflow: hidden;
-            margin-top: 20px;
+            margin-top: 25px;
         }
         
         .edit-btn {
-            margin-top: 10px;
+            margin-top: 15px;
+            border-radius: 50px;
         }
         
         .editable-content {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .editable-content:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            outline: none;
         }
         
         .print-only {
@@ -137,7 +221,8 @@
         
         .logo-sekolah {
             max-width: 100px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
         
         .text-center-print {
@@ -159,39 +244,103 @@
         
         .ttd-space {
             height: 80px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 5px;
         }
         
         .data-awal-grid {
             display: grid;
             grid-template-columns: max-content 1fr;
-            gap: 10px 15px;
+            gap: 12px 20px;
         }
         
         .data-awal-label {
             font-weight: bold;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .pedagogis-grid {
             display: grid;
             grid-template-columns: max-content 1fr;
-            gap: 10px;
+            gap: 12px;
         }
         
         .pedagogis-label {
             font-weight: bold;
             white-space: nowrap;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .print-content {
             display: none;
-            padding: 20px;
+            padding: 30px;
         }
         
         .generated-content h4 {
             font-size: 1.1rem;
             font-weight: 600;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: white;
+        }
+        
+        .generated-content ul {
+            padding-left: 20px;
+        }
+        
+        .generated-content li {
+            margin-bottom: 8px;
+        }
+        
+        /* Custom checkbox style */
+        .form-check-input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        /* Custom radio button style */
+        .form-check-input[type="radio"] {
+            border-radius: 50%;
+        }
+        
+        /* Textarea style */
+        textarea.form-control {
+            border-radius: var(--border-radius);
+            min-height: 120px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                height: auto;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .card {
+                margin-bottom: 20px;
+            }
         }
         
         @media print {
@@ -210,6 +359,8 @@
                 width: 100%;
                 padding: 20px;
                 margin: 0;
+                background: white;
+                color: black;
             }
             
             @page {
@@ -227,6 +378,7 @@
             .card {
                 box-shadow: none !important;
                 border: none !important;
+                background: transparent !important;
             }
             
             .card-header {
@@ -237,25 +389,75 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .sidebar {
-                position: relative;
-                height: auto;
-                width: 100%;
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
+        /* Floating glass effect */
+        .floating-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .floating-glass:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Loading spinner */
+        .spinner-border {
+            width: 1.2rem;
+            height: 1.2rem;
+            border-width: 0.15em;
+        }
+        
+        /* Header style */
+        .sidebar h4 {
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Input group text */
+        .input-group-text {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar Menu -->
-            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse p-3 no-print">
-                <h4 class="text-center mb-4">RPP Esdelima</h4>
+            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse p-3 no-print floating-glass">
+                <h4 class="text-center mb-4">RPP ESDELIMA</h4>
                 
                 <ul class="nav flex-column">
                     <li class="nav-item">
@@ -283,7 +485,7 @@
             <div class="col-md-9 col-lg-10 ms-sm-auto main-content">
                 <!-- Step 1: Data Awal -->
                 <div id="step1" class="step-content active">
-                    <div class="card mb-4">
+                    <div class="card mb-4 floating-glass">
                         <div class="card-header">Data Awal</div>
                         <div class="card-body">
                             <div class="mb-3">
@@ -316,41 +518,47 @@
                 
                 <!-- Step 2: Identifikasi -->
                 <div id="step2" class="step-content">
-                    <div class="card mb-4">
+                    <div class="card mb-4 floating-glass">
                         <div class="card-header">Identifikasi</div>
                         <div class="card-body">
                             <h5 class="sub-title mb-3">Dimensi Profil Lulusan:</h5>
-                            <div class="form-check dimension-checkbox">
-                                <input class="form-check-input" type="checkbox" id="dimensi1">
-                                <label class="form-check-label" for="dimensi1">Keimanan dan Ketakwaan terhadap Tuhan YME</label>
-                            </div>
-                            <div class="form-check dimension-checkbox">
-                                <input class="form-check-input" type="checkbox" id="dimensi2">
-                                <label class="form-check-label" for="dimensi2">Kewargaan</label>
-                            </div>
-                            <div class="form-check dimension-checkbox">
-                                <input class="form-check-input" type="checkbox" id="dimensi3">
-                                <label class="form-check-label" for="dimensi3">Penalaran Kritis</label>
-                            </div>
-                            <div class="form-check dimension-checkbox">
-                                <input class="form-check-input" type="checkbox" id="dimensi4">
-                                <label class="form-check-label" for="dimensi4">Kreativitas</label>
-                            </div>
-                            <div class="form-check dimension-checkbox">
-                                <input class="form-check-input" type="checkbox" id="dimensi5">
-                                <label class="form-check-label" for="dimensi5">Kolaborasi</label>
-                            </div>
-                            <div class="form-check dimension-checkbox">
-                                <input class="form-check-input" type="checkbox" id="dimensi6">
-                                <label class="form-check-label" for="dimensi6">Kemandirian</label>
-                            </div>
-                            <div class="form-check dimension-checkbox">
-                                <input class="form-check-input" type="checkbox" id="dimensi7">
-                                <label class="form-check-label" for="dimensi7">Kesehatan</label>
-                            </div>
-                            <div class="form-check dimension-checkbox">
-                                <input class="form-check-input" type="checkbox" id="dimensi8">
-                                <label class="form-check-label" for="dimensi8">Komunikasi</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check dimension-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="dimensi1">
+                                        <label class="form-check-label" for="dimensi1">Keimanan dan Ketakwaan terhadap Tuhan YME</label>
+                                    </div>
+                                    <div class="form-check dimension-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="dimensi2">
+                                        <label class="form-check-label" for="dimensi2">Kewargaan</label>
+                                    </div>
+                                    <div class="form-check dimension-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="dimensi3">
+                                        <label class="form-check-label" for="dimensi3">Penalaran Kritis</label>
+                                    </div>
+                                    <div class="form-check dimension-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="dimensi4">
+                                        <label class="form-check-label" for="dimensi4">Kreativitas</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check dimension-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="dimensi5">
+                                        <label class="form-check-label" for="dimensi5">Kolaborasi</label>
+                                    </div>
+                                    <div class="form-check dimension-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="dimensi6">
+                                        <label class="form-check-label" for="dimensi6">Kemandirian</label>
+                                    </div>
+                                    <div class="form-check dimension-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="dimensi7">
+                                        <label class="form-check-label" for="dimensi7">Kesehatan</label>
+                                    </div>
+                                    <div class="form-check dimension-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="dimensi8">
+                                        <label class="form-check-label" for="dimensi8">Komunikasi</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -363,7 +571,7 @@
                 
                 <!-- Step 3: Desain Pembelajaran -->
                 <div id="step3" class="step-content">
-                    <div class="card mb-4">
+                    <div class="card mb-4 floating-glass">
                         <div class="card-header">Desain Pembelajaran</div>
                         <div class="card-body">
                             <div class="mb-3">
@@ -377,7 +585,7 @@
                                     <input class="form-check-input" type="radio" name="pedagogisOption" id="pedagogisManual" value="manual" checked>
                                     <label class="form-check-label" for="pedagogisManual">Manual</label>
                                 </div>
-                                <div class="form-check mb-2">
+                                <div class="form-check mb-3">
                                     <input class="form-check-input" type="radio" name="pedagogisOption" id="pedagogisOtomatis" value="otomatis">
                                     <label class="form-check-label" for="pedagogisOtomatis">Otomatis</label>
                                 </div>
@@ -426,10 +634,10 @@
                 
                 <!-- Step 4: Pengalaman Belajar -->
                 <div id="step4" class="step-content">
-                    <div class="card mb-4">
+                    <div class="card mb-4 floating-glass">
                         <div class="card-header">Pengalaman Belajar</div>
                         <div class="card-body">
-                            <button id="generateBtn" class="btn btn-primary w-100 mb-4">Generate Langkah Pembelajaran</button>
+                            <button id="generateBtn" class="btn btn-primary w-100 mb-4 floating-glass">Generate Langkah Pembelajaran</button>
                             <div id="pengalamanBelajarResult" class="editable-content generated-content" contenteditable="false"></div>
                             <button id="editPengalamanBtn" class="btn btn-outline-primary edit-btn">Edit</button>
                             <button id="savePengalamanBtn" class="btn btn-primary edit-btn" style="display:none;">Simpan</button>
@@ -444,7 +652,7 @@
                 
                 <!-- Step 5: Asesmen -->
                 <div id="step5" class="step-content">
-                    <div class="card mb-4">
+                    <div class="card mb-4 floating-glass">
                         <div class="card-header">Asesmen</div>
                         <div class="card-body">
                             <div id="asesmenResult" class="editable-content generated-content" contenteditable="false"></div>
@@ -461,9 +669,9 @@
                 
                 <!-- Step 6: Ringkasan RPP -->
                 <div id="step6" class="step-content">
-                    <div class="card mb-4 no-print">
+                    <div class="card mb-4 no-print floating-glass">
                         <div class="card-body">
-                            <button class="btn btn-success mb-3" id="printBtn">Cetak RPP</button>
+                            <button class="btn btn-success mb-3 floating-glass" id="printBtn">Cetak RPP</button>
                             <p>Pastikan semua data sudah benar sebelum mencetak.</p>
                         </div>
                     </div>
@@ -589,7 +797,7 @@
                         </div>
                     </div>
                     
-                    <div class="card mb-4 no-print">
+                    <div class="card mb-4 no-print floating-glass">
                         <div class="card-header">Informasi Tambahan</div>
                         <div class="card-body">
                             <div class="mb-3">
@@ -825,11 +1033,24 @@
         async function generateLangkahPembelajaran(mataPelajaran, kelasSemester, tujuanPembelajaran, dimensi) {
             const prompt = `Buatkan langkah-langkah pembelajaran mendalam untuk mata pelajaran ${mataPelajaran} kelas ${kelasSemester} dengan tujuan pembelajaran: "${tujuanPembelajaran}" yang mencakup dimensi profil lulusan: ${dimensi.join(', ')}. 
             
-            Langkah-langkah harus mencakup tiga tahap: 
-            1. Memahami (berkesadaran, bermakna, menggembirakan)
-            2. Mengaplikasi (berkesadaran, bermakna, menggembirakan)
-            3. Merefleksi (berkesadaran, bermakna, menggembirakan)
+            Langkah-langkah harus mencerminkan tiga tahap: 
+            1. Memahami:  Tahap awal peserta didik untuk aktif mengkonstruksi pengetahuan agar dapat memahami secara mendalam konsep atau materi dari berbagai sumber dan konteks. (tuliskan prinsip pembelajaran yang digunakan: berkesadaran, bermakna, dan/atau menggembirakan)
+Tuliskan kegiatan pembelajaran yang memfasilitasi peserta didik untuk terlibat aktif mengonstruksi pengetahuan agar dapat memahami secara mendalam konsep atau materi dari berbagai sumber dan konteks. Pengetahuan pada fase ini terdiri dari pengetahuan esensial, pengetahuan aplikatif, dan pengetahuan nilai dan karakter.
+            2. Mengaplikasi:  Pengalaman belajar yang menunjukan aktivitas peserta didik mengaplikasi pengetahuan dalam kehidupan secara kontekstual. (tuliskan prinsip pembelajaran yang digunakan: berkesadaran, bermakna, dan/atau menggembirakan)
+Tuliskan kegiatan yang mengondisikan pengalaman belajar yang menunjukan aktivitas peserta didik mengaplikasi pemahaman secara kontekstual atau kehidupan nyata (hidup, kehidupan, dan/atau penghidupan). Proses mengaplikasi ini merupakan bagian dari pendalaman pengetahuan untuk menghasilkan pengembangan kompetensi
+            3. Merefleksi:  Proses di mana peserta didik mengevaluasi dan 
+memaknai proses serta hasil dari tindakan atau praktik nyata yang telah mereka lakukan. (tuliskan prinsip pembelajaran yang digunakan: berkesadaran, bermakna, dan/atau menggembirakan)
+Tuliskan kegiatan yang mampu memfasilitasi peserta didik:
+a. mengevaluasi dan memaknai proses serta hasil dari tindakan atau praktik nyata yang telah mereka lakukan dan menentukan tindaklanjut ke depan.
+b. mengelola proses belajarnya secara mandiri, dengan meneruskan dan mengembangkan strategi belajar yang berhasil dan memperbaiki yang belum berhasil dengan tetap meningkatkan motivasi belajar dan kepercayaan diri.
+
+Berkesadaran adalah Peserta didik memiliki pengalaman belajar yang bermakna ketika mereka secara sadar menjadi pembelajar aktif dan mampu mengatur diri sendiri. Mereka memahami tujuan pembelajaran, termotivasi secara intrinsik, serta mengembangkan strategi belajar untuk mencapai tujuan tersebut.
+
+Bermakna adalah Pembelajaran menjadi bermakna ketika peserta didik merasakan manfaat dan relevansi dari apa yang dipelajari dalam kehidupan sehari-hari. Mereka mampu membangun pengetahuan baru berdasarkan pemahaman sebelumnya dan menerapkannya dalam konteks nyata.
+
+Mengermbirakan adalah Pembelajaran yang menggembirakan menciptakan suasana positif, menyenangkan, dan menantang. Peserta didik merasa dihargai atas partisipasinya serta terhubung secara emosional, sehingga lebih mudah memahami, mengingat, dan mengaplikasikan pengetahuan.
             
+
             Format dalam HTML dengan struktur yang rapi tanpa kalimat pembuka. Gunakan heading level 4 (h4) untuk setiap tahap dan bullet points untuk langkah-langkahnya. Pastikan ukuran heading tidak lebih besar dari teks biasa.`;
             
             const response = await callGeminiAPI(prompt);
